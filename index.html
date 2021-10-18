@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+            height: 100vh;
+            background: linear-gradient(to right,rgb(38, 37, 49),rgb(30, 28, 39));
+            text-align: center;
+        }
+        .calculator{
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            box-shadow: 0 0 7px;
+        }
+        input,button{
+            border: none;
+            outline: none;
+            height: 50px;
+        }
+        input{
+            color: rgb(216, 216, 216);
+            width: 230px;
+            font-size: 25px;
+            margin-bottom: -1px;
+            background: linear-gradient(to right,rgb(38, 37, 49),rgb(30, 28, 39));
+            box-shadow: 0 0 5px black;    
+        }
+        button{
+            margin: -1px;
+            font-weight: 550;
+            width: 57px;
+            height: 57px;
+            font-size: 1rem;
+            background-color: transparent;
+            border-radius: 50%;
+            color: rgb(156, 156, 156);
+        }
+        button:active{
+            background-color: rgb(49, 46, 66);
+        }
+        .container{
+            
+        }
+        .mt{
+            color: rgb(141, 217, 236);
+        }
+        .heading{
+            color: rgba(219, 219, 219, 0.747);
+            font-size: 18px;
+            margin-top: 30px;
+        }
+        .footer{
+            letter-spacing: 4px;
+            text-decoration: none;
+            font-family: Lucida Console;
+            font-size: 10px;
+            margin-top: 560px;
+        }
+        a{
+            text-decoration: none;
+            color: rgb(77, 78, 78);
+        }
+    </style>
+
+</head>
+<body>
+    <p class="heading">Calculator</p>
+    <div class="container">
+        <div class="calculator">
+            <input type="text" name="" id="input" autocomplete="off">
+            <table>
+                <tr>
+                    <td><button class="mt">C</button></td>
+                    <td><button class="mt">%</button></td>
+                    <td><button class="mt"><</button></td>
+                    <td><button class="mt">/</button></td>
+                </tr>
+                <tr>
+                    <td><button>7</button></td>
+                    <td><button>8</button></td>
+                    <td><button>9</button></td>
+                    <td><button class="mt">x</button></td>
+                </tr>
+                <tr>
+                    <td><button>4</button></td>
+                    <td><button>5</button></td>
+                    <td><button>6</button></td>
+                    <td><button class="mt">-</button></td>
+                </tr>
+                <tr>
+                    <td><button>1</button></td>
+                    <td><button>2</button></td>
+                    <td><button>3</button></td>
+                    <td><button class="mt">+</button></td>
+                </tr>
+                <tr>
+                    <td><button>00</button></td>
+                    <td><button>0</button></td>
+                    <td><button class="mt">.</button></td>
+                    <td><button class="mt">=</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <p class="footer"><a href="https://www.instagram.com/aditya_ekhande_/">@aditya_ekhande_</a></p>
+</body>
+</html>
+
+<script>
+    let input = document.getElementById("input");
+    let button = document.querySelectorAll("button");
+    let inputValue = "";
+
+    for(item of button){
+        item.addEventListener("click",(e) => {
+            buttonText = e.target.innerText;
+            console.log("botton test is",buttonText);
+
+            if(buttonText == "x"){
+                buttonText = "*";
+                inputValue += buttonText;
+                input.value = inputValue;
+            }
+            else if(buttonText == "C"){
+                inputValue = "";
+                input.value = inputValue;
+            }
+            else if(buttonText == "="){
+                input.value = eval(inputValue);
+            }
+            else{
+                inputValue += buttonText;
+                input.value = inputValue;
+            }
+        });
+    }
+</script>
